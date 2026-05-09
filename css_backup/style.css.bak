@@ -1,0 +1,666 @@
+/*
+   style.css - v9 (Modernized with Animation Prep)
+   Silva & Bernardo Advogados Landing Page
+*/
+
+/* 1. Reset & Globals
+-------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif; /* Corpo do texto */
+    line-height: 1.7;
+    color: #333; /* Cor de texto padrão */
+    background-color: #fff; /* Fundo padrão */
+    overflow-x: hidden; /* Prevenir scroll horizontal */
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #1B4D3E; /* Verde Inglês */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #D4AF37; /* Dourado */
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif; /* Títulos */
+    color: #1B4D3E; /* Verde Inglês */
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+h2.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+/* Linha sutil abaixo do título da seção */
+h2.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #D4AF37; /* Dourado */
+}
+
+p.section-subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.section-padding {
+    padding: 5rem 0;
+}
+
+.bg-light {
+    background-color: #f8f9fa;
+}
+
+.bg-dark {
+    background-color: #1B4D3E; /* Verde Inglês */
+    color: #fff;
+}
+
+.bg-dark h2, .bg-dark h3, .bg-dark h4 {
+    color: #fff;
+}
+
+.bg-dark p {
+    color: #eee;
+}
+
+.bg-dark a {
+    color: #D4AF37; /* Dourado */
+}
+
+.bg-dark a:hover {
+    color: #fff;
+}
+
+.bg-dark .section-title::after {
+    background-color: #fff; /* Linha branca em fundo escuro */
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* 2. Header
+-------------------------------------------------- */
+.site-header {
+    background: #fff;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-header .logo {
+    height: 100px; /* Aumentado de 80px para 100px */
+    max-width: 300px; /* Ajustado para manter proporção */
+    width: auto;
+}
+
+.main-nav ul {
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 25px;
+}
+
+.main-nav ul li a {
+    color: #333;
+    font-weight: 700; /* Lato Bold */
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.main-nav ul li a:hover, 
+.main-nav ul li a.active {
+    color: #1B4D3E;
+    border-bottom-color: #D4AF37; /* Dourado */
+}
+
+.contato-rapido .whatsapp-button {
+    display: inline-flex; /* Alinhar ícone e texto */
+    align-items: center;
+    background-color: #25D366; /* Verde WhatsApp */
+    color: white;
+    padding: 10px 18px;
+    border-radius: 50px; /* Botão mais arredondado */
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.contato-rapido .whatsapp-button:hover {
+    background-color: #128C7E;
+    transform: scale(1.05);
+    color: white;
+}
+
+.contato-rapido .whatsapp-button .icon {
+    width: 24px; /* Ícone maior */
+    height: 24px;
+    margin-right: 8px;
+    filter: brightness(0) invert(1); /* Ícone branco */
+}
+
+/* 3. Hero Section
+-------------------------------------------------- */
+.hero {
+    /* background: #1B4D3E; */ /* Cor sólida como fallback */
+    color: #fff;
+    padding: 8rem 0; /* Mais espaçamento */
+    text-align: center;
+    position: relative; /* Para o canvas */
+    overflow: hidden; /* Para conter o canvas */
+    min-height: 70vh; /* Altura mínima */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    position: relative; /* Para ficar acima do canvas */
+    z-index: 2;
+    background-color: rgba(27, 77, 62, 0.85); /* Overlay Verde Inglês mais opaco para melhor contraste */
+    padding: 2.5rem; /* Aumentado padding para melhor espaçamento */
+    border-radius: 8px; /* Bordas arredondadas para o overlay */
+    max-width: 900px; /* Limitar largura do conteúdo */
+    margin: 0 auto; /* Centralizar */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Sombra para destacar do fundo */
+    border: 1px solid rgba(212, 175, 55, 0.3); /* Borda dourada sutil */
+}
+
+.hero h1 {
+    font-size: 3.5rem; /* Título maior */
+    color: #fff; /* Título branco sobre fundo escuro */
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #eee;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.cta-button {
+    display: inline-block;
+    background: #D4AF37; /* Dourado */
+    color: #1B4D3E; /* Verde Inglês */
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+.cta-button:hover {
+    background: #b89b30; /* Dourado mais escuro */
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(184, 155, 48, 0.4);
+}
+
+/* 4. Seção Princípios (O Escritório)
+-------------------------------------------------- */
+#principios {
+    background-color: #f0f4f3; /* Fundo verde muito claro para destaque sutil */
+}
+
+#principios .principios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+#principios h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #1B4D3E;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+#principios h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #D4AF37;
+}
+
+.valores-lista li {
+    background-color: #f8f9fa;
+    border-left: 4px solid #D4AF37; /* Destaque dourado */
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    color: #1B4D3E;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.valores-lista li:hover {
+    background-color: #e9ecef;
+}
+
+/* 5. Seção Equipe
+-------------------------------------------------- */
+#equipe .equipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+#equipe .membro-equipe {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#equipe .membro-equipe:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Adicionar estilos para foto, nome, cargo quando houver conteúdo */
+
+/* 6. Seção Atuação (Nichos)
+-------------------------------------------------- */
+#atuacao .nichos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+#atuacao .nicho-item {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden; /* Para conter a imagem */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#atuacao .nicho-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+#atuacao .nicho-item img {
+    width: 100%;
+    height: 220px; /* Altura fixa */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+#atuacao .nicho-item:hover img {
+    transform: scale(1.05);
+}
+
+#atuacao .nicho-content {
+     padding: 1.5rem;
+}
+
+#atuacao .nicho-item h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+#atuacao .nicho-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* 7. Seção Contato
+-------------------------------------------------- */
+#contato .contato-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 35px; /* Botões maiores */
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    min-width: 280px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.contact-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.contact-button .icon {
+    width: 30px; /* Ícones maiores */
+    height: 30px;
+    margin-right: 12px;
+    vertical-align: middle;
+}
+
+.contact-button-whatsapp {
+    background-color: #25D366;
+    color: white;
+}
+.contact-button-whatsapp:hover {
+    background-color: #128C7E;
+    color: white;
+}
+.contact-button-whatsapp .icon {
+    filter: brightness(0) invert(1);
+}
+
+.contact-button-instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+}
+.contact-button-instagram:hover {
+    opacity: 0.9;
+    color: white;
+}
+.contact-button-instagram .icon {
+    filter: brightness(0) invert(1);
+}
+
+.contact-button-email {
+    background-color: #EA4335;
+    color: white;
+}
+.contact-button-email:hover {
+    background-color: #d93025;
+    color: white;
+}
+.contact-button-email .icon {
+    filter: brightness(0) invert(1);
+}
+
+/* 8. Footer
+-------------------------------------------------- */
+.site-footer {
+    background: #333;
+    color: #ccc;
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 4rem;
+}
+
+.site-footer .logo-footer {
+    height: 80px; /* Ajustado para tamanho adequado no rodapé */
+    max-width: 250px;
+    margin-bottom: 1rem;
+    /* filter: brightness(0) invert(0.8); */ /* Filtro removido para exibir logo original */
+}
+
+.site-footer p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.site-footer .social-links a {
+    color: #D4AF37; /* Dourado */
+    margin: 0 12px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.site-footer .social-links a:hover {
+    color: #fff;
+}
+
+/* 9. Animações (Scroll Trigger Prep)
+-------------------------------------------------- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 10. Responsividade
+-------------------------------------------------- */
+@media (max-width: 992px) {
+    .site-header .container {
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 1rem; /* Add padding when stacked */
+    }
+    .main-nav {
+        margin-top: 1rem;
+        width: 100%; /* Ensure nav takes full width when stacked */
+        text-align: center; /* Center the nav items container */
+    }
+    .contato-rapido {
+        margin-top: 1rem;
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    /* Force single column earlier for better tablet view */
+    #principios .principios-grid,
+    #atuacao .nichos-grid,
+    #equipe .equipe-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem; /* Adjust gap if needed */
+    }
+}
+
+@media (max-width: 768px) {
+    h2.section-title {
+        font-size: 2rem;
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+    }
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center; /* Ensure items inside the ul are centered */
+        padding-left: 0; /* Remove default padding */
+    }
+    .main-nav ul li {
+        margin: 10px 0; /* Increase vertical spacing slightly */
+        margin-left: 0; /* Remove left margin inherited from desktop */
+        width: 100%; /* Ensure list items take full width for centering */
+        text-align: center; /* Center text within list items */
+    }
+    .section-padding {
+        padding: 3rem 0;
+    }
+    #principios .principios-grid,
+    #atuacao .nichos-grid, /* Ensure single column on smaller tablets too */
+    #equipe .equipe-grid {
+        display: grid; /* Revert to grid */
+        grid-template-columns: 1fr; /* Ensure single column */
+        gap: 1.5rem;
+    }
+
+    /* Remove specific block/margin rules for nicho-item here, handle in smaller media query if needed */
+
+    .contact-button {
+        min-width: 240px;
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+    .contact-button .icon {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+    .contato-botoes {
+        gap: 1rem;
+    }
+    .contact-button {
+        width: 100%; /* Ocupar largura total */
+        min-width: unset;
+    }
+}
+
+
+
+
+/* Ajustes v12: Estilos específicos para fotos da equipe */
+#equipe .foto-equipe {
+    width: 180px; /* Define uma largura fixa */
+    height: 180px; /* Define uma altura fixa */
+    border-radius: 50%; /* Torna a imagem circular */
+    object-fit: cover; /* Garante que a imagem cubra a área, cortando se necessário */
+    object-position: center; /* Centraliza a imagem dentro do quadro */
+    margin: 0 auto 1.5rem auto; /* Centraliza horizontalmente e adiciona espaço abaixo */
+    display: block; /* Garante que a margem automática funcione para centralizar */
+    border: 4px solid #D4AF37; /* Adiciona uma borda dourada sutil */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adiciona uma sombra leve */
+}
+
+/* Ajuste específico para a foto da Dra. Juliana */
+#equipe .membro-equipe:nth-child(2) .foto-equipe {
+    object-position: center 30%; /* Move a imagem um pouco para baixo */
+}
+
+
+
+/* Remover linha decorativa especificamente do título da seção Contato */
+#contato h2.section-title::after {
+    display: none;
+}
+
+
+
+@media (max-width: 576px) {
+    #atuacao .nicho-item {
+        width: 100%; /* Garante que o card ocupe a largura total */
+        margin-bottom: 1.5rem; /* Adiciona espaço entre os cards empilhados */
+    }
+
+    /* Ajustar padding dos botões de contato para telas muito pequenas */
+    .contact-button {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+    .contact-button .icon {
+        width: 22px;
+        height: 22px;
+        margin-right: 10px;
+    }
+
+    /* Ajustar tamanho da logo no rodapé */
+    .site-footer .logo-footer {
+        height: 60px;
+    }
+}
+
+
+
+/* Media Query Específica para Nichos em Telas Muito Pequenas */
+@media screen and (max-width: 480px) {
+    #atuacao .nichos-grid {
+        display: block !important; /* Forçar block em vez de grid ou flex */
+        grid-template-columns: none !important; /* Remover completamente as colunas */
+    }
+    
+    #atuacao .nicho-item {
+        display: block !important;
+        width: 100% !important; /* Garantir largura total do item */
+        margin-bottom: 1.5rem !important; /* Espaçamento entre itens */
+        float: none !important; /* Prevenir flutuação */
+    }
+    
+    #atuacao .nicho-item:last-child {
+        margin-bottom: 0 !important; /* Remover margem do último item */
+    }
+}
+
